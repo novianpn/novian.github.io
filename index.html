@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>mobile</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="all.css" />
+    <script src="jquery-3.4.1.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="all.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .icon-bar {
+            width: 22px;
+            height: 2px;
+            background-color: #fff;
+            display: block;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            background: transparent !important;
+        }
+        
+        .navbar-toggler .top-bar {
+            transform: rotate(45deg);
+            transform-origin: 10% 10%;
+        }
+        
+        .navbar-toggler .middle-bar {
+            opacity: 0;
+        }
+        
+        .navbar-toggler .bottom-bar {
+            transform: rotate(-45deg);
+            transform-origin: 10% 90%;
+        }
+        
+        .navbar-toggler.collapsed .top-bar {
+            transform: rotate(0);
+        }
+        
+        .navbar-toggler.collapsed .middle-bar {
+            opacity: 1;
+        }
+        
+        .navbar-toggler.collapsed .bottom-bar {
+            transform: rotate(0);
+        }
+        
+        .hero-image {
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .hero-image::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar {
+                background-color: #ff2276;
+            }
+            .caption {
+                font-size: 30px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .navbar {
+                background-color: transparent;
+            }
+            .navbar-brand {
+                /*padding: 20px;*/
+            }
+            #navbarSupportedContent a:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: #fff;
+                visibility: hidden;
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
+            }
+            #navbarSupportedContent a {
+                position: relative;
+                text-decoration: none;
+            }
+            #navbarSupportedContent a:hover:before {
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+        }
+        
+        .button {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 50px;
+        }
+        
+        #button {
+            display: inline-block;
+            background-color: #ff9800;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 4px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        #button::after {
+            content: "^";
+            font-family: FontAwesome;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 2em;
+            line-height: 50px;
+            color: #fff;
+        }
+        
+        #button:hover {
+            cursor: pointer;
+            background-color: #333;
+        }
+        
+        #button:active {
+            background-color: #555;
+        }
+        
+        #button.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .solid {
+            background-color: #ff2276;
+            transition: background-color 1s ease 0s;
+            box-shadow: 0 0 4px grey;
+        }
+        
+        .container-fluid {
+            /*height:auto;
+     padding-top:70px;
+     padding-bottom:70px; */
+            padding: 5em 0;
+        }
+        
+        body {
+            position: relative;
+            overflow-y: scroll;
+        }
+        
+        .sec-services i {
+            display: block;
+            margin: auto;
+            width: 45px;
+        }
+        
+        .sec-services .fa-paint-brush {
+            width: 64px;
+        }
+        
+        .sec-services .fa-code {
+            width: 68px;
+        }
+        
+        .sec-services h2 {
+            margin: 1em 0;
+        }
+        
+        hr {
+            margin-bottom: 3em;
+            width: 7%;
+        }
+        
+        .sec-services h2 {
+            margin: 1em 0;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-expand-lg navbar-dark text-white fixed-top">
+        <span class="navbar-brand h1" href="#">LEARNING BY DOING</span>
+        <button class="navbar-toggler collapsed mb-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-5">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll" href="#Home">Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#Post">Post</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tutorial
+            </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item js-scroll" href="#Post1">Tutorial HTML</a>
+                        <a class="dropdown-item" href="#">Tutorial CSS</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Tutorial Bootstrap</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll" href="#Tentang">Tentang</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row hero-image no-gutters bg-info" id="Home">
+        <div class="col-12 button">
+            <img src="avatar2.png" alt="" class="img-responsive rounded-circle" style="width: 140px; height: 140px" />
+            <h1 class="text-center text-white text-upercase caption">
+                LEARNING BY DOING
+            </h1>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark text-white text-center" id="Post">
+        <div class="container pt-5">
+            <h1 class="text-center">Services</h1>
+            <hr />
+            <div class="row d-flex justify-content-center mx-auto text-center">
+                <div class="col-sm-4">
+                    <i class="fa fa-4x fa-paint-brush"></i>
+                    <h2 class="h3">Beautiful Design</h2>
+                    <p>
+                        Every website is beautiful, unique and tailored to suit your needs and requirements.
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="fa fa-4x fa-code"></i>
+                    <h2 class="h3">Clean Code</h2>
+                    <p>
+                        All websites are written in valid and clean HTML5 / CSS3 &amp; JavaScript (jQuery).
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="fa fa-4x fa-tablet"></i>
+                    <h2 class="h3">Always Responsive</h2>
+                    <p>
+                        All websites are responsive. They will look great on desktop, tablets and mobile phones too.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-info text-white text-center" id="Post1">
+        <div class="container pt-3">
+            <h1 class="text-center pt-2">Features</h1>
+            <div class="row mt-4">
+                <div class="col-md-7">
+                    <h4>
+                        First featurette heading.
+                        <span class="text-muted">It’ll blow your mind.</span>
+                    </h4>
+                    <p class="text-justify">
+                        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777"></rect>
+              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777"></rect>
+              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+                </div>
+                <div class="col-md-7">
+                    <h4>
+                        First featurette heading.
+                        <span class="text-muted">It’ll blow your mind.</span>
+                    </h4>
+                    <p class="text-justify">
+                        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Tentang" class="container-fluid text-white" style="background-color: #544387">
+        <div class="container col-md-8">
+            <h2 class="text-center title">Contact Us</h2>
+            <form class="contact-form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Your Name</label>
+                            <input type="text" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Your Email</label>
+                            <input type="email" class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleMessage" class="bmd-label-floating">Your Message</label
+            >
+            <textarea
+              class="form-control"
+              rows="6"
+              id="exampleMessage"
+              required
+            ></textarea>
+            <div class="invalid-feedback">
+              Example invalid custom select feedback
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <input class="btn btn-primary mr-2" type="submit" value="Submit" />
+            <input class="btn btn-primary" type="reset" value="Reset" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer text-center bg-danger text-white">
+      <p class="lead p-3">
+        Designed by @novian_pn ,All rights reserved.&copy;Company 2019
+      </p>
+      <br />
+    </div>
+    <a id="button"></a>
+    <script type="text/javascript">
+      var btn = $("#button");
+
+      $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+          btn.addClass("show");
+        } else {
+          btn.removeClass("show");
+        }
+      });
+
+      btn.on("click", function (e) {
+        e.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "300");
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Transition effect for navbar
+        $(window).scroll(function () {
+          // checks if window is scrolled more than 500px, adds/removes solid class
+          if ($(this).scrollTop() > 70) {
+            $(".navbar").addClass("solid");
+          } else {
+            $(".navbar").removeClass("solid");
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Add smooth scrolling on all links inside the navbar
+        $("#navbarSupportedContent a").on("click", function (event) {
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top,
+              },
+              800,
+              function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              }
+            );
+          } // End if
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      // Closes responsive menu when a scroll trigger link is clicked
+      $(".js-scroll").on("click", function () {
+        $(".navbar-collapse").collapse("hide");
+      });
+    </script>
+  </body>
+</html>
